@@ -11,8 +11,6 @@ import java.math.BigInteger;
 @Data
 @Entity
 @XmlRootElement
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "student")
 public class Student implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
