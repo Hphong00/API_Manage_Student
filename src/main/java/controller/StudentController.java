@@ -31,7 +31,15 @@ public class StudentController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String addNewStudent(Student student) {
-        return studentService.addStudent(student) ? "thành công" : "thất bại";
+        return studentService.addStudent(student) ? "thêm mới sinh viên thành công" : "thêm mới sinh viên thất bại";
+    }
+
+    @PUT
+    @Path("/")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String upDateStudent(Student student) {
+        return studentService.updateStudent(student) ? "update thành công" : "update thất bại";
     }
 
     @DELETE
