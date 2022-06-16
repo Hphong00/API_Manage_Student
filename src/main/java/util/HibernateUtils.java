@@ -9,16 +9,29 @@ import org.hibernate.service.ServiceRegistry;
 
 public class HibernateUtils {
 
-    public static SessionFactory sessionFactory;
+    private static final SessionFactory sessionFactory = buildSessionFactory();
+
+    // Hibernate 5:
+    private static SessionFactory buildSessionFactory() {
+        try {
+            // Tạo đối tượng ServiceRegistry từ hibernate.cfg.xml
+            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()//
+                    .configure("hibernate.cfg.xml").build();
+            // Tạo nguồn siêu dữ liệu (metadata) từ ServiceRegistry
+            Metadata metadata = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
+
+            return metadata.getSessionFactoryBuilder().build();
+        } catch (Throwable ex) {
+
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
 
     public static SessionFactory getSessionFactory() {
-        if (sessionFactory == null) {
-            StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().configure().build();
-            Metadata metadata = new MetadataSources(serviceRegistry).getMetadataBuilder().build();
-            return metadata.getSessionFactoryBuilder().build();
-        }
         return sessionFactory;
     }
+
     public static void shutdown() {
         // Giải phóng cache và Connection Pools.
         getSessionFactory().close();

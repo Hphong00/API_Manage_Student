@@ -18,7 +18,7 @@ public class StudentDaoImpl implements Dao<Student>{
             // đều phải nằm trong 1 giao dịch (Transaction)
             // Bắt đầu giao dịch
             session.getTransaction().begin();
-            String sql = "Select e from Student e";
+            String sql = "Select s from student s";
             // Tạo đối tượng Query.
             Query<Student> query = session.createQuery(sql);
             // Thực hiện truy vấn.

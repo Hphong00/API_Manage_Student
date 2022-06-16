@@ -2,40 +2,53 @@ package entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.math.BigInteger;
+        import java.util.Objects;
 @Data
-@Entity
-@XmlRootElement
+@Entity(name = "student")
 @Table(name = "student")
+@AllArgsConstructor
 public class Student implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "ID",nullable = false)
+    @Column(name = "ID")
     private int id;
     @Basic
-    @Column(name = "FULLNAME",nullable = false)
+    @Column(name = "FULLNAME")
     private String fullname;
     @Basic
-    @Column(name = "BIRTHDAY",nullable = false)
+    @Column(name = "BIRTHDAY")
     private String birthday;
     @Basic
-    @Column(name = "CLASSNAME",nullable = false)
+    @Column(name = "CLASSNAME")
     private String classname;
     @Basic
-    @Column(name = "MAJOR",nullable = false)
+    @Column(name = "MAJOR")
     private String major;
     @Basic
-    @Column(name = "HOMETOWN",nullable = false)
+    @Column(name = "HOMETOWN")
     private String hometown;
     @Basic
-    @Column(name = "GENDER",nullable = false)
+    @Column(name = "GENDER")
     private String gender;
     @Basic
-    @Column(name = "AVERAGEMARK",nullable = false)
+    @Column(name = "AVERAGEMARK")
     private String averagemark;
+
+    public Student(String fullname, String birthday, String classname, String major, String hometown, String gender, String averagemark) {
+        this.fullname = fullname;
+        this.birthday = birthday;
+        this.classname = classname;
+        this.major = major;
+        this.hometown = hometown;
+        this.gender = gender;
+        this.averagemark = averagemark;
+    }
+
+    public Student() {
+
+    }
 }
