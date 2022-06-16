@@ -101,4 +101,22 @@ public class StudentDaoImpl implements Dao<Student>{
         }
         return false;
     }
+    public List<Student> getBirthday() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        try {
+            session.getTransaction().begin();
+            String sql = "Select s from student s where s.birthday = current_date";
+            Query<Student> query = session.createQuery(sql);
+            List<Student> students = query.getResultList();
+            for (Student student : students) {
+                System.out.println(student.toString());
+            }
+            session.getTransaction().commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        }
+        return null;
+    }
+
 }

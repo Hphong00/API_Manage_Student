@@ -24,5 +24,6 @@ public class StudentService {
     public boolean deleteStudent(int id) {
         return studentDaoImpl.delete(id);
     }
+    public List<Student> getBirthday(){return studentDaoImpl.getBirthday();}
 
 }

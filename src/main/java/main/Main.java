@@ -10,8 +10,8 @@ public class Main {
 //        System.out.println("--------------------------");
 //        studentService.getEntityByIdStudent(10001);
 //        System.out.println("--------------------------");
-        Student student = new Student(10024,"lainh","01/22","11B1","Nữ","Hà Nội","Nam","9");
-        studentService.updateStudent(student);
+//        Student student = new Student(10024,"lainh","01/22","11B1","Nữ","Hà Nội","Nam","9");
+//        studentService.updateStudent(student);
 //        System.out.println("--------------------------");
 //        studentService.deleteStudent(10015);
 
