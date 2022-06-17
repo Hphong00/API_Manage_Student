@@ -2,15 +2,18 @@ package entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
-        import java.util.Objects;
+import java.sql.Date;
+import java.util.Objects;
 @Data
-@Entity(name = "student")
-@Table(name = "student")
 @AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "student")
+@Entity(name = "student")
 public class Student implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -21,7 +24,7 @@ public class Student implements Serializable {
     private String fullname;
     @Basic
     @Column(name = "BIRTHDAY")
-    private String birthday;
+    private Date birthday;
     @Basic
     @Column(name = "CLASSNAME")
     private String classname;
@@ -36,9 +39,9 @@ public class Student implements Serializable {
     private String gender;
     @Basic
     @Column(name = "AVERAGEMARK")
-    private String averagemark;
+    private short averagemark;
 
-    public Student(String fullname, String birthday, String classname, String major, String hometown, String gender, String averagemark) {
+    public Student(String fullname, Date birthday, String classname, String major, String hometown, String gender, short averagemark) {
         this.fullname = fullname;
         this.birthday = birthday;
         this.classname = classname;
@@ -46,9 +49,5 @@ public class Student implements Serializable {
         this.hometown = hometown;
         this.gender = gender;
         this.averagemark = averagemark;
-    }
-
-    public Student() {
-
     }
 }
